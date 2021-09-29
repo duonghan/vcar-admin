@@ -51,26 +51,6 @@ const Topbar: FC = () => {
         {/* end::Menu wrapper */}
       </div>
 
-      {/* CHAT */}
-      <div className={clsx('d-flex align-items-center', toolbarButtonMarginClass)}>
-        {/* begin::Menu wrapper */}
-        <div
-          className={clsx(
-            'btn btn-icon btn-active-light-primary position-relative',
-            toolbarButtonHeightClass
-          )}
-          id='kt_drawer_chat_toggle'
-        >
-          <KTSVG
-            path='/media/icons/duotune/communication/com012.svg'
-            className={toolbarButtonIconSizeClass}
-          />
-
-          <span className='bullet bullet-dot bg-success h-6px w-6px position-absolute translate-middle top-0 start-50 animation-blink'></span>
-        </div>
-        {/* end::Menu wrapper */}
-      </div>
-
       {/* NOTIFICATIONS */}
       <div className={clsx('d-flex align-items-center', toolbarButtonMarginClass)}>
         {/* begin::Menu- wrapper */}
@@ -106,7 +86,7 @@ const Topbar: FC = () => {
           data-kt-menu-placement='bottom-end'
           data-kt-menu-flip='bottom'
         >
-          <img src={toAbsoluteUrl('/media/avatars/150-2.jpg')} alt='metronic' />
+          <img src={toAbsoluteUrl('/media/avatars/150-0.jpg')} alt='KHa-BanH' />
         </div>
         <HeaderUserMenu />
         {/* end::Toggle */}

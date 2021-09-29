@@ -12,11 +12,9 @@ export class UsersTableMock {
         accessToken: 'access-token-8f3ae836da744329a6f93bf20594b5cc',
         refreshToken: 'access-token-f8c137a2c98743f48b643e71161d90aa',
       },
-      roles: [1], // Administrator
-      pic: toAbsoluteUrl('/media/avatars/150-2.jpg'),
-      fullname: 'Sean S',
-      firstname: 'Sean',
-      lastname: 'Stark',
+      roles: ['admin'], // Administrator
+      pic: toAbsoluteUrl('/media/avatars/150-0.jpg'),
+      name: 'KHa BanH',
       occupation: 'CEO',
       companyName: 'Keenthemes',
       phone: '456669067890',
@@ -69,11 +67,9 @@ export class UsersTableMock {
         accessToken: 'access-token-6829bba69dd3421d8762-991e9e806dbf',
         refreshToken: 'access-token-f8e4c61a318e4d618b6c199ef96b9e55',
       },
-      roles: [2], // Manager
+      roles: ['manager'], // Manager
       pic: toAbsoluteUrl('/media/avatars/150-1.jpg'),
-      fullname: 'Megan F',
-      firstname: 'Megan',
-      lastname: 'Fox',
+      name: 'Megan Fox',
       occupation: 'Deputy Head of Keenthemes in New York office',
       companyName: 'Keenthemes',
       phone: '456669067891',
@@ -125,11 +121,9 @@ export class UsersTableMock {
         accessToken: 'access-token-d2dff7b82f784de584b60964abbe45b9',
         refreshToken: 'access-token-c999ccfe74aa40d0aa1a64c5e620c1a5',
       },
-      roles: [3], // Guest
+      roles: ['guest'], // Guest
       pic: toAbsoluteUrl('/media/avatars/150-5.jpg'),
-      fullname: 'Manu G',
-      firstname: 'Manu',
-      lastname: 'Ginobili',
+      name: 'Manu Ginobili',
       occupation: 'CFO',
       companyName: 'Keenthemes',
       phone: '456669067892',

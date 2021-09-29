@@ -1,9 +1,7 @@
 import MockAdapter from 'axios-mock-adapter'
-import {UserModel} from '../models/UserModel'
 import {
   LOGIN_URL,
   GET_USER_BY_ACCESSTOKEN_URL,
-  REGISTER_URL,
   REQUEST_PASSWORD_URL,
 } from '../redux/AuthCRUD'
 import {UsersTableMock} from './usersTableMock'
@@ -21,34 +19,6 @@ export function mockAuth(mock: MockAdapter) {
         const auth = user.auth
         return [200, {...auth, password: undefined}]
       }
-    }
-
-    return [400]
-  })
-
-  mock.onPost(REGISTER_URL).reply(({data}) => {
-    const {email, firstname, lastname, password} = JSON.parse(data)
-
-    if (email && firstname && lastname && password) {
-      const user: UserModel = {
-        id: generateUserId(),
-        email,
-        firstname,
-        lastname,
-        username: `${firstname}-${lastname}`,
-        password,
-        roles: [2], // Manager
-        auth: {
-          accessToken: 'access-token-' + Math.random(),
-          refreshToken: 'access-token-' + Math.random(),
-        },
-        pic: process.env.PUBLIC_URL + '/media/users/default.jpg',
-      }
-
-      UsersTableMock.table.push(user)
-      const auth = user.auth
-
-      return [200, {...auth, password: undefined}]
     }
 
     return [400]

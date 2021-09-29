@@ -8,14 +8,12 @@ export interface UserModel {
   id: number
   username: string
   password: string | undefined
+  name: string
   email: string
-  firstname: string
-  lastname: string
-  fullname?: string
   occupation?: string
   companyName?: string
   phone?: string
-  roles?: Array<number>
+  roles?: Array<string>
   pic?: string
   language?: 'en' | 'de' | 'es' | 'fr' | 'ja' | 'zh' | 'ru'
   timeZone?: string

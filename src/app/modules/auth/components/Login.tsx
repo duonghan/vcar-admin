@@ -3,15 +3,14 @@ import React, {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import * as Yup from 'yup'
 import clsx from 'clsx'
-import {Link} from 'react-router-dom'
 import {useFormik} from 'formik'
 import * as auth from '../redux/AuthRedux'
 import {login} from '../redux/AuthCRUD'
-import {toAbsoluteUrl} from '../../../../_metronic/helpers'
+import { Link } from 'react-router-dom'
 
 const loginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Wrong email format')
+  username: Yup.string()
+    // .email('Wrong email format')
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
     .required('Email is required'),
@@ -22,8 +21,8 @@ const loginSchema = Yup.object().shape({
 })
 
 const initialValues = {
-  email: 'admin@demo.com',
-  password: 'demo',
+  username: 'admin',
+  password: 'admin',
 }
 
 /*
@@ -41,7 +40,7 @@ export function Login() {
     onSubmit: (values, {setStatus, setSubmitting}) => {
       setLoading(true)
       setTimeout(() => {
-        login(values.email, values.password)
+        login(values.username, values.password)
           .then(({data: {accessToken}}) => {
             setLoading(false)
             dispatch(auth.actions.login(accessToken))
@@ -62,51 +61,26 @@ export function Login() {
       noValidate
       id='kt_login_signin_form'
     >
-      {/* begin::Heading */}
-      {/* <div className='text-center mb-10'>
-        <h1 className='text-dark mb-3'>Sign In to Metronic</h1>
-        <div className='text-gray-400 fw-bold fs-4'>
-          New Here?{' '}
-          <Link to='/auth/registration' className='link-primary fw-bolder'>
-            Create an Account
-          </Link>
-        </div>
-      </div> */}
-      {/* begin::Heading */}
-
-      {/* {formik.status ? (
-        <div className='mb-lg-15 alert alert-danger'>
-          <div className='alert-text font-weight-bold'>{formik.status}</div>
-        </div>
-      ) : (
-        <div className='mb-10 bg-light-info p-8 rounded'>
-          <div className='text-info'>
-            Use account <strong>admin@demo.com</strong> and password <strong>demo</strong> to
-            continue.
-          </div>
-        </div>
-      )} */}
-
       {/* begin::Form group */}
       <div className='fv-row mb-10'>
-        <label className='form-label fs-6 fw-bolder text-dark'>Email</label>
+        <label className='form-label fs-6 fw-bolder text-dark'>Username</label>
         <input
-          placeholder='Email'
-          {...formik.getFieldProps('email')}
+          placeholder='Username'
+          {...formik.getFieldProps('username')}
           className={clsx(
             'form-control form-control-lg form-control-solid',
-            {'is-invalid': formik.touched.email && formik.errors.email},
+            {'is-invalid': formik.touched.username && formik.errors.username},
             {
-              'is-valid': formik.touched.email && !formik.errors.email,
+              'is-valid': formik.touched.username && !formik.errors.username,
             }
           )}
-          type='email'
-          name='email'
+          type='text'
+          name='username'
           autoComplete='off'
         />
-        {formik.touched.email && formik.errors.email && (
+        {formik.touched.username && formik.errors.username && (
           <div className='fv-plugins-message-container'>
-            <span role='alert'>{formik.errors.email}</span>
+            <span role='alert'>{formik.errors.username}</span>
           </div>
         )}
       </div>
@@ -120,13 +94,13 @@ export function Login() {
             <label className='form-label fw-bolder text-dark fs-6 mb-0'>Password</label>
             {/* end::Label */}
             {/* begin::Link */}
-            {/* <Link
+            <Link
               to='/auth/forgot-password'
               className='link-primary fs-6 fw-bolder'
               style={{marginLeft: '5px'}}
             >
               Forgot Password ?
-            </Link> */}
+            </Link>
             {/* end::Link */}
           </div>
         </div>
@@ -170,43 +144,6 @@ export function Login() {
             </span>
           )}
         </button>
-
-        {/* begin::Separator */}
-        {/* <div className='text-center text-muted text-uppercase fw-bolder mb-5'>or</div> */}
-        {/* end::Separator */}
-
-        {/* begin::Google link */}
-        {/* <a href='#' className='btn btn-flex flex-center btn-light btn-lg w-100 mb-5'>
-          <img
-            alt='Logo'
-            src={toAbsoluteUrl('/media/svg/brand-logos/google-icon.svg')}
-            className='h-20px me-3'
-          />
-          Continue with Google
-        </a> */}
-        {/* end::Google link */}
-
-        {/* begin::Google link */}
-        {/* <a href='#' className='btn btn-flex flex-center btn-light btn-lg w-100 mb-5'>
-          <img
-            alt='Logo'
-            src={toAbsoluteUrl('/media/svg/brand-logos/facebook-4.svg')}
-            className='h-20px me-3'
-          />
-          Continue with Facebook
-        </a> */}
-        {/* end::Google link */}
-
-        {/* begin::Google link */}
-        {/* <a href='#' className='btn btn-flex flex-center btn-light btn-lg w-100'>
-          <img
-            alt='Logo'
-            src={toAbsoluteUrl('/media/svg/brand-logos/apple-black.svg')}
-            className='h-20px me-3'
-          />
-          Continue with Apple
-        </a> */}
-        {/* end::Google link */}
       </div>
       {/* end::Action */}
     </form>

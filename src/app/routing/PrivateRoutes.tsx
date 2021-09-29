@@ -1,6 +1,7 @@
 import React, {Suspense, lazy} from 'react'
 import {Redirect, Route, Switch} from 'react-router-dom'
 import {FallbackView} from '../../_metronic/partials'
+import {CabPage} from '../modules/entities/cab/CabPage'
 import {DashboardWrapper} from '../pages/dashboard/DashboardWrapper'
 import {MenuTestPage} from '../pages/MenuTestPage'
 
@@ -17,6 +18,7 @@ export function PrivateRoutes() {
       <Switch>
         <Route path='/dashboard' component={DashboardWrapper} />
         <Route path='/builder' component={BuilderPageWrapper} />
+        <Route path='/cab' component={CabPage} />
         <Route path='/crafted/pages/profile' component={ProfilePage} />
         <Route path='/crafted/pages/wizards' component={WizardsPage} />
         <Route path='/crafted/widgets' component={WidgetsPage} />
