@@ -3,6 +3,7 @@ import createSagaMiddleware from 'redux-saga'
 import {reduxBatch} from '@manaflair/redux-batch'
 import {persistStore} from 'redux-persist'
 import {rootReducer, rootSaga} from './RootReducer'
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
 const sagaMiddleware = createSagaMiddleware()
 const middleware = [
@@ -21,7 +22,11 @@ const store = configureStore({
   enhancers: [reduxBatch],
 })
 
+export type IRootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch
+
+export const useAppSelector: TypedUseSelectorHook<IRootState> = useSelector;
+export const useAppDispatch = () => useDispatch<AppDispatch>();
 
 /**
  * @see https://github.com/rt2zz/redux-persist#persiststorestore-config-callback
